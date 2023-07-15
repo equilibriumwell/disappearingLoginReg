@@ -1,0 +1,291 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(img/pexels-pixabay-268533.jpg);
+  background-size:cover;
+  /* Background image and sizee may  need to be used in tandem of eachother or I can put background-image with background-position to get the same results*/
+  background-position: center;
+}
+/* okay in the body I wanted to put a background image that would look nice and give a dark theme but not dark scary dark calming */
+
+header{
+  position:fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  padding: 20px 100px;
+  /* background: red; */
+  /* used background coloring to see how everything would line up */
+  display:flex;
+  justify-content: space-between;
+  z-index: 99;
+
+}
+
+.logo{
+  font-size: 2em;
+  color:#fff;
+  user-select: none;
+  /* user-select is not supported by safari */
+}
+
+.navigation a{
+  position: relative;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+
+}
+
+.navigation a::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+
+  /* was able to customize an underline for each navigation link  */
+
+  transform: scaleX(0);
+  /* This makes the underline disappear at the current moment ? */
+  /* will use hover to bring it back into viw with some ease */
+  transition: transform .5s; 
+
+  transform-origin: right;
+}
+
+.navigation a:hover::after{
+  transform:scaleX(1);
+
+  transform-origin: left;
+  /* when using both transforms it creates the illusion that the transform on the x axis is going through in stead of going and retreating */
+
+}
+
+.navigation .btnLogin-popup{
+  width: 130px;
+  height: 50px;
+  background:transparent;
+  border: 2px solid black;
+  border:none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 40px;
+  /* This was to restyle the button a see through button with space between header links or nav links */
+  transition: 2s;
+}
+
+.navigation .btnLogin-popup:hover{
+  background: #fff;
+  color: #162938;
+  
+/* hover on button to change background to white and black text */
+}
+
+.login{
+  color:white;
+}
+.register{
+  color:white
+}
+
+
+.wrapper{
+  position:relative;
+  width: 400px;
+  height:440px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 30px rgba(0,0, 0, .5);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: scale(0);
+  transition: transform .5s ease, height .2s ease;
+}
+.wrapper.active{
+  height: 520px;
+}
+
+.wrapper.active-popup{
+  transform: scale(1)
+}
+.wrapper .form-box{
+
+  width:100%;
+  padding: 40px
+}
+
+.wrapper .form-box.login{
+  transition: transform .18s ease;
+}
+
+.wrapper.active .form-box.login{
+  transform:none;
+  transform: translateX(-400px);
+}
+
+.wrapper .form-box.register{
+  position: absolute;
+  transition: none;
+  transform: translateX(400px)
+
+}
+
+.wrapper.active .form-box.register{
+  transition: transform .18s ease;
+  transform: translateX(0);
+}
+.wrapper .icon-close{
+  position:absolute;
+  top:0;
+  right:0;
+  width:45px;
+  height:45px;
+  background: white;
+  font-size: 2em;
+  color: black;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px ;
+  cursor:pointer;
+  z-index: 1;
+}
+
+.form-box h2{
+  font-size: 2em;
+  /* color: #162938; */
+  text-align:center;
+
+}
+
+.input-box{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid whitesmoke;
+  margin: 30px 0;
+}
+
+
+.input-box label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+  top:-5px;
+}
+
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: white;
+  font-weight: 600;
+  padding: 0 35px 0 5px
+
+}
+
+
+.input-box .icon{
+  position:absolute;
+  right: 8px;
+  /* top: 22px; */
+  font-size: 1.2em;
+  line-height: 57px;
+}
+
+.remember-forgot{
+  font-size: .9em;
+  color: white;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input{
+  accent-color: black;
+  margin-right: 3px;
+}
+
+.remember-forgot a{
+  color:white;
+  text-decoration: none;
+
+}
+
+.remember-forgot a:hover{
+  text-decoration: underline 2px;
+}
+
+.btn{
+  width:100%;
+  height:45px;
+  background: transparent;
+  border:none;
+  outline: none;
+  border-radius: 6px;
+  cursor:pointer;
+  font-size: 1em;
+  color:white;
+  transition: 1.5s;
+ font-weight: 500;
+}
+
+.btn:hover{
+  background:white;
+  color:black;
+  opacity: .6;
+}
+
+.login-register{
+  font-size: .9em;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px
+}
+
+.login-register p a{
+color:white;
+text-decoration: none;
+font-weight: 600;
+
+}
+
+.login-register p a:hover{
+  text-decoration: underline;
+}
